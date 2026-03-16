@@ -1,0 +1,3 @@
+I love observing 🐿️  
+Can u leak the flag plz ... for me ...  
+**nc 45.77.20.255 11012**  
