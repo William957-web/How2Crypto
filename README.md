@@ -18,14 +18,14 @@ https://crypto-ctf.whale-tw.com/
 |Challenge|Tip|
 |---|---|
 |super_signer|ECB Mode Prepend Oracle Attack|
-|broken_menu||
-|key_man||
-|zero_logon||
+|broken_menu|ChaCha20, Poly1305|
+|key_man|weak key|
+|zero_logon|Zero Logon|
 |babyaes|Padding Oracle Attack|
 |trillion_bank|ECB Mode Copy & Paste Attack|
 |one_shot|CBC Mode Bit Flipping Attack|
 |psychic_msg|Padding Oracle Attack|
-|daes||
+|daes|MitM|
 
 ### RSA
 |Challenge|Tip|
