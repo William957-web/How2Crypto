@@ -70,3 +70,11 @@ https://crypto-ctf.whale-tw.com/
 |normal_19937|MT19937 but GF2/z3 required|
 |linear_feedback|LFSR|
 
+
+### JWT
+|Challenge|Tip|
+|---|---|
+|Level 1|JWT None Algo|
+|Level 2|HS256 weak secret|
+|Level 3|Invalid key file|
+|Level 4|Algo Confusion Attack|
