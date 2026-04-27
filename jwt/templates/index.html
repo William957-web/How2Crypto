@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}JWT CTF{% endblock %}
+{% block content %}
+  <section class="masthead">
+    <img src="/static/logo.png" class="logo" alt="logo">
+    <div>
+      <div class="eyebrow">How2Crypto / JWT</div>
+      <h1>Forge guest into whale</h1>
+      <p class="lede">Each level gives you a JWT for <code>guest</code>. Your job is to turn it into <code>whale</code> and recover the flag.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <h2>Challenge Notes</h2>
+    <ul class="list">
+      <li>Every level uses a hand-rolled JWT helper instead of PyJWT.</li>
+      <li>The page shows the vulnerable handler source below the token box.</li>
+      <li>The objective is always the same: submit a valid token whose payload contains <code>{"user":"whale"}</code>.</li>
+    </ul>
+  </section>
+
+  <section class="grid level-grid">
+    {% for name, level in levels.items() %}
+      <article class="card">
+        <div class="pill">{{ name|upper }}</div>
+        <h3>{{ level.title }}</h3>
+        <p class="muted">{{ level.summary }}</p>
+        <div class="actions">
+          <a class="button" href="/{{ name }}">Open challenge</a>
+        </div>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock %}

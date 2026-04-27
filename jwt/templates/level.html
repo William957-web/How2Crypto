@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+  <section class="masthead">
+    <img src="/static/logo.png" class="logo" alt="logo">
+    <div>
+      <div class="eyebrow">JWT Challenge</div>
+      <h1>{{ title }}</h1>
+      <p class="lede">{{ summary }}</p>
+      <a class="subtle" href="/">Back to index</a>
+    </div>
+  </section>
+
+  <section class="grid two-col" style="margin-bottom: 18px;">
+    <article class="card">
+      <h2>Guest Token</h2>
+      <pre class="token-box">{{ guest_token }}</pre>
+      <p class="muted">Change the payload to <code>{"user":"whale"}</code> and keep the verifier happy.</p>
+    </article>
+
+    <article class="card">
+      <h2>Submit Forged Token</h2>
+      <form method="post">
+        <textarea name="token" placeholder="eyJhbGciOi...">{{ submitted_token }}</textarea>
+        <div class="actions">
+          <button type="submit">Verify token</button>
+        </div>
+      </form>
+
+      {% if result %}
+        <div class="flash ok">{{ result }}</div>
+      {% endif %}
+      {% if flag %}
+        <div class="flash ok">Flag: <code>{{ flag }}</code></div>
+      {% endif %}
+      {% if error %}
+        <div class="flash bad">{{ error }}</div>
+      {% endif %}
+    </article>
+  </section>
+
+  <section class="card">
+    <h2>JWT Handler Source</h2>
+    <pre class="source-box">{{ source_code }}</pre>
+  </section>
+{% endblock %}

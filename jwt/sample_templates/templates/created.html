@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>表單已建立</h1>
+  <p class="subtitle">請複製下面的連結並分享給隊員：</p>
+  <pre style="background:#f7f7f7;padding:12px;border-radius:6px;overflow:auto;">{{ link }}</pre>
+  <p class="small-muted">Form ID: {{ formid }}</p>
+  <div class="actions">
+    <a href="{{ link }}"><button>打開這個表單</button></a>
+  </div>
+{% endblock %}

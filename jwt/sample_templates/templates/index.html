@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}表單首頁{% endblock %}
+{% block content %}
+  <img src="/static/logo.png" class="logo" alt="logo">
+  <h1>建立 HITCON CTF 2025 報名表單</h1>
+  <p class="subtitle">建立內部報名連結，之後會產生 /form?id=xxxxxxx 可分享給成員填寫</p>
+  <form method="post" action="{{ url_for('create_form') }}">
+    <div class="actions">
+      <button type="submit">產生新的表單連結</button>
+    </div>
+  </form>
+{% endblock %}
