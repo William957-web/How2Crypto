@@ -1,4 +1,5 @@
 import os
+import time
 
 from flask import Flask, render_template, request
 
@@ -7,6 +8,7 @@ import level2
 import level3
 import level4
 from jwtlib import JWTError
+from jwtlib import encode_token
 
 
 APP_DIR = os.path.dirname(__file__)
@@ -36,6 +38,31 @@ LEVELS = {
 }
 
 
+def build_token_data(user):
+    return {
+        "user": user,
+        "timestamp": int(time.time()),
+    }
+
+
+def issue_guest_token(level_name):
+    module = LEVELS[level_name]["module"]
+    payload = build_token_data("guest")
+
+    if hasattr(module, "PRIVATE_KEY_FILE"):
+        return encode_token(payload, module.PRIVATE_KEY_FILE, alg="RS256")
+
+    if hasattr(module, "DEFAULT_KEYFILE"):
+        return encode_token(
+            payload,
+            module.read_secret(module.DEFAULT_KEYFILE),
+            alg="HS256",
+            headers={"kid": module.DEFAULT_KEYFILE},
+        )
+
+    return encode_token(payload, module.SECRET, alg="HS256")
+
+
 def build_level_context(level_name):
     config = LEVELS[level_name]
     module = config["module"]
@@ -43,7 +70,7 @@ def build_level_context(level_name):
         "name": level_name,
         "title": config["title"],
         "summary": config["summary"],
-        "guest_token": module.issue_guest_token(),
+        "guest_token": issue_guest_token(level_name),
         "source_code": module.source_for_display(),
         "submitted_token": "",
         "result": None,
