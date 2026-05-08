@@ -69,7 +69,8 @@ https://crypto-ctf.whale-tw.com/
 |baby_19937|MT19937|
 |normal_19937|MT19937 but GF2/z3 required|
 |linear_feedback|LFSR|
-
+|Jeff's Generator|Correlation Attack|
+|EasyLFSR|Patchy|
 
 ### JWT
 |Challenge|Tip|
@@ -78,3 +79,10 @@ https://crypto-ctf.whale-tw.com/
 |Level 2|HS256 weak secret|
 |Level 3|Invalid key file|
 |Level 4|Algo Confusion Attack|
+
+
+### TLS
+|Challenge|Tip|
+|---|---|
+|TLS 1.2|TLS 1.2 Decrypt|
+|TLS 1.3|TLS 1.3 Decrypt|
